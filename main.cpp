@@ -2,6 +2,9 @@
 #include "clikit.hpp"
 
 using namespace std;
+struct cubeVector{
+    int area[3][3];
+};
 
 int main(){
     Menu<int> menu("Menu",{
