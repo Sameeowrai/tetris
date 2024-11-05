@@ -16,6 +16,28 @@ public:
         }
     }
 
+    void rotate(){
+        cubeVector zero = {{{0,0,0},{0,0,0},{0,0,0}}};
+        Shape rotated_shape;
+        rotated_shape.set(zero);
+        for(int i=0;i < 3; i++){
+            for(int j=0; j < 3;j++){
+                if(area[i][j] == 1){
+                    rotated_shape.area[(2-j)][i] = 1;
+                }
+            }
+        }
+        for(int i=0; i < 3; i++){
+            for(int j=0; j < 3; j++){
+                if(rotated_shape.area[i][j] == 1){
+                    area[i][j] = 1;
+                }else{
+                    area[i][j] = 0;
+                }
+            }
+        }
+    }
+
 };
 
 
