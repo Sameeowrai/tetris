@@ -38,6 +38,9 @@ public:
         }
     }
 
+    int getArea(int i, int j) {
+        return area[i][j];
+    }
 };
 
 
