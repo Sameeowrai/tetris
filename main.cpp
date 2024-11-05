@@ -5,6 +5,20 @@ using namespace std;
 struct cubeVector{
     int area[3][3];
 };
+class Shape{
+    int area[3][3];
+public:
+    void set(cubeVector area){
+        for(int i=0; i< 3;i++){
+            for(int j = 0; j < 3;j++){
+                this->area[i][j] = area.area[i][j];
+            }
+        }
+    }
+
+};
+
+
 
 int main(){
     Menu<int> menu("Menu",{
