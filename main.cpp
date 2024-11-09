@@ -73,8 +73,16 @@ class Game{
                 map[i][j] = 0;
             }
         }
+        produce();
     }
 
+    void produce() {
+        int randomNumber = rand() % shapesVector.size();
+        cubeVector vector = shapesVector[randomNumber];
+        currentShape.set(vector);
+        shapeX = width / 2 - 1; 
+        shapeY = 0;
+    }
 };
 
 int main(){
