@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include "clikit.hpp"
+#include "tenenc.hpp"
 
 using namespace std;
 
