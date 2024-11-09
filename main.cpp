@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include "clikit.hpp"
 
 using namespace std;
@@ -273,12 +274,12 @@ class Game{
                     }
                 }
             }
-            
+
             score += currentShape.getBlocksCount();
             produce();
         }
         checkRow();
-        }
+    }
 
     void restart(){
         score = 0;
@@ -292,6 +293,7 @@ class Game{
 };
 
 int main(){
+    srand(time(0));
     Menu<int> menu("Menu",{
         {"Start",defaultColor,0},
         {"High Score",defaultColor,1},
@@ -367,5 +369,6 @@ int main(){
         default:
             break;
         }
-    }   
+    }
+    return 0;
 }
