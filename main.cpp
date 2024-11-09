@@ -78,6 +78,7 @@ class Game{
     int shapeX,shapeY;
     public:
     int score = 0;
+    int highScore = 0;
     float speed = 0.25;
     int map[height][width];
     bool isGameover = false;
