@@ -77,6 +77,7 @@ class Game{
     int shapeX,shapeY;
     public:
     int score = 0;
+    float speed = 0.25;
     int map[height][width];
     bool isGameover = false;
     string blockColor = "\e[1;92m";
@@ -323,7 +324,7 @@ int main(){
             unblockInput();
             while(!game.isGameover){
                 game.display();
-                usleep(microsecond*0.25);
+                usleep(microsecond*game.speed);
                 if(read(STDIN_FILENO, &c,1) > 0){
                     if(c == 'a'){
                         game.moveLeft();
@@ -356,8 +357,16 @@ int main(){
             case 0:
                 game.blockColor = colorMenu.Get();
                 break;
-            case 1:
+            case 1:{
+                Input<float> speedInput("Enter game speed between 0 & 1:",0.01);
+                float speed = speedInput.Read();
+                while(speed <= 0 || speed > 1){
+                    cout << "Invalid number!" << endl;
+                    speed = speedInput.Read();
+                }
+                game.speed = speed;
                 break;
+            }
             default:
                 break;
             }
