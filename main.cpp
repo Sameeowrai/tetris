@@ -124,6 +124,39 @@ class Game{
         shapeX = width / 2 - 1; 
         shapeY = 0;
     }
+    bool checkLeftCollide(Shape shape){
+        for(int i=2; i >= 0; i--){
+            for(int j=0; j <= 2;j++){
+                if(map[shapeY+i][shapeX+j-1] == 1 && shape.getArea(i,j) == 1){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    bool checkRightCollide(Shape shape){
+        for(int i=2; i >= 0; i--){
+            for(int j=2; j >= 0;j--){
+                if(map[shapeY+i][shapeX+j+1] == 1 && shape.getArea(i,j) == 1){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    bool checkDownCollide(){
+        for(int i=3;i>0;i--){
+            for(int j=0; j < 3; j++){
+                if(map[shapeY+i][shapeX+j] == 1 && currentShape.getArea(i-1,j) == 1){
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
 };
 
 int main(){
