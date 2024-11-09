@@ -199,6 +199,17 @@ class Game{
         
         return false;
     }
+
+    void fall(int i){
+        for(i; i > 0; i--){
+            for(int j=0; j < width;j++){
+                    int tmp = map[i-1][j];
+                    map[i-1][j] = 0;
+                    map[i][j] = tmp;
+            }
+        }
+    }
+
     void checkRow(){
         bool isComplete;
         for(int i=height-1;i > 0; i--){
