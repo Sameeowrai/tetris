@@ -304,6 +304,7 @@ int main(){
         switch (op)
         {
         case 0:{
+            game.restart();
             char c;
             unblockInput();
             while(!game.isGameover){
