@@ -274,6 +274,7 @@ class Game{
                 }
             }
             
+            score += currentShape.getBlocksCount();
             produce();
         }
         checkRow();
