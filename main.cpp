@@ -316,6 +316,12 @@ class Game{
             highScore = 0;
         }
     }
+
+    void place(){
+        while(!checkDownCollide() && shapeY+3 < height){
+            shapeY++;
+        }
+    }
 };
 
 int main(){
@@ -360,6 +366,8 @@ int main(){
                         game.moveDown();
                     }else if(c == 'r'){
                         game.rotate();
+                    }else if(c == 'f'){
+                        game.place();
                     }
                 }
                 game.update();
