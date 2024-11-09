@@ -2,6 +2,10 @@
 #include "clikit.hpp"
 
 using namespace std;
+
+const int width = 10;
+const int height = 20;
+
 struct cubeVector{
     int area[3][3];
 };
