@@ -124,6 +124,25 @@ class Game{
         shapeX = width / 2 - 1; 
         shapeY = 0;
     }
+
+    bool checkLeftOut(Shape shape){
+        for(int i=0;i<3; i++){
+            if(shapeX <= 0 && shape.getArea(i,-shapeX) == 1){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool checkRightOut(Shape shape){
+        for(int i=0;i<3; i++){
+            if(shapeX+3 >= width && shape.getArea(i,2-(shapeX+3-width)) == 1){
+                return true;
+            }
+        }
+        return false;
+    }
+
     bool checkOnGround(){
         for(int i=0;i<3; i++){
             if(shapeY+3 >= height && currentShape.getArea(2-(shapeY+3-height),i) == 1){
