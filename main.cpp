@@ -292,6 +292,30 @@ class Game{
         }
         isGameover = false;
     }
+
+    void updateHighScore(){
+        if(score > highScore){
+            ofstream file("score.dat");
+            Tenenc tenenc;
+            if(file.is_open()){
+                file << tenenc.encode(to_string(score));
+                file.close();
+            }
+            highScore = score;
+        }
+    }
+
+    void loadHighScore(){
+        ifstream scoreFile("score.dat");
+        if(scoreFile.is_open()){
+            string line;
+            Tenenc tenenc;
+            getline(scoreFile,line);
+            highScore = stoi(tenenc.decode(line));
+        }else{
+            highScore = 0;
+        }
+    }
 };
 
 int main(){
@@ -315,6 +339,7 @@ int main(){
       {"White",defaultColor,"\e[1;37m"},
     },0.01,10);
     Game game;
+    Tenenc tenenc;
     while(1){
         int op = menu.Get();
         switch (op)
@@ -340,6 +365,7 @@ int main(){
                 game.update();
                 tcflush(STDIN_FILENO,TCIFLUSH);
             }
+            game.updateHighScore();
             resetInput();
             print("Game Over",0.25,"\e[1;31m");
             print("Press Any Key To Continue ...", 0.05, "\e[1;33m",0);
@@ -348,6 +374,12 @@ int main(){
         }
 
         case 1:{
+            cls();
+            game.loadHighScore();
+            Menu<int> back(to_string(game.highScore),{
+                {"Back", defaultColor, 0},
+            });
+            back.Get();
             break;
         }
 
