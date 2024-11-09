@@ -5,6 +5,18 @@ using namespace std;
 struct cubeVector{
     int area[3][3];
 };
+
+cubeVector L = {{{1,0,0},{1,0,0},{1,1,0}}};
+cubeVector J = {{{0,0,1},{0,0,1},{0,1,1}}};
+cubeVector I = {{{1,0,0},{1,0,0},{1,0,0}}};
+cubeVector O = {{{1,1,0},{1,1,0},{0,0,0}}};
+cubeVector S = {{{0,0,0},{0,1,1},{1,1,0}}};
+cubeVector Z = {{{0,0,0},{1,1,0},{0,1,1}}};
+cubeVector T = {{{0,0,0},{1,1,1},{0,1,0}}};
+cubeVector Zero = {{{0,0,0},{0,0,0},{0,0,0}}};
+
+vector<cubeVector> shapesVector = {L,J,I,O,S,Z,T};
+
 class Shape{
     int area[3][3];
 public:
