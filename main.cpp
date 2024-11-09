@@ -199,6 +199,23 @@ class Game{
         
         return false;
     }
+    void checkRow(){
+        bool isComplete;
+        for(int i=height-1;i > 0; i--){
+            isComplete = true;
+            for(int j=0; j < width;j++){
+                if(map[i][j] != 1){
+                    isComplete = false;
+                    break;
+                }
+            }
+            if(isComplete){
+                score += width;
+                fall(i);
+            }
+        }
+    }
+
     void update(){
         if(!checkDownCollide() && !checkOnGround()){
             shapeY++;
@@ -222,6 +239,7 @@ class Game{
             
             produce();
         }
+        checkRow();
         }
 };
 
