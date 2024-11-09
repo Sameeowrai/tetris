@@ -124,6 +124,15 @@ class Game{
         shapeX = width / 2 - 1; 
         shapeY = 0;
     }
+    bool checkOnGround(){
+        for(int i=0;i<3; i++){
+            if(shapeY+3 >= height && currentShape.getArea(2-(shapeY+3-height),i) == 1){
+                return true;
+            }
+        }
+        return false;
+    }
+
     bool checkLeftCollide(Shape shape){
         for(int i=2; i >= 0; i--){
             for(int j=0; j <= 2;j++){
