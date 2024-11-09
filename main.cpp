@@ -298,6 +298,18 @@ int main(){
         {"Settings",defaultColor,2},
         {"Exit", "\e[0;31m",3}
     },0.01,10);
+    Menu<int> setting("Menu",{
+        {"Change Block Color", defaultColor, 0},
+        {"Change Game Speed", defaultColor, 1},
+    },0.01,10);
+    Menu<string> colorMenu("Colors", {
+      {"Black",defaultColor,"\e[1;30m"},
+      {"Red",defaultColor,"\e[1;31m"},
+      {"Green",defaultColor,"\e[1;32m"},  
+      {"Yellow",defaultColor,"\e[1;33m"},
+      {"Blue",defaultColor,"\e[1;34m"},
+      {"White",defaultColor,"\e[1;37m"},
+    },0.01,10);
     Game game;
     while(1){
         int op = menu.Get();
@@ -336,6 +348,17 @@ int main(){
         }
 
         case 2:{
+            int s_op = setting.Get();
+            switch (s_op)
+            {
+            case 0:
+                game.blockColor = colorMenu.Get();
+                break;
+            case 1:
+                break;
+            default:
+                break;
+            }
             break;
         }
         case 3:{
