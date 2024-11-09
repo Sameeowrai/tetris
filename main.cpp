@@ -57,9 +57,25 @@ public:
     int getArea(int i, int j) {
         return area[i][j];
     }
+
+class Game{
+    Shape currentShape;
+    int shapeX,shapeY;
+    public:
+    int score = 0;
+    int map[height][width];
+    bool isGameover = false;
+    string blockColor = "\e[1;92m";
+    Game(){
+        currentShape.set(Zero);
+        for(int i=0; i < height; i++){
+            for(int j=0;j < width;j++){
+                map[i][j] = 0;
+            }
+        }
+    }
+
 };
-
-
 
 int main(){
     Menu<int> menu("Menu",{
