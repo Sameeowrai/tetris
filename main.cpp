@@ -58,6 +58,19 @@ public:
         return area[i][j];
     }
 
+    int getBlocksCount(){
+        int counter = 0;
+        for(int i=0; i < 3; i++){
+            for(int j=0; j < 3; j++){
+                if(area[i][j] == 1)
+                counter++;
+            }
+        }
+        return counter;
+    }
+};
+
+
 class Game{
     Shape currentShape;
     int shapeX,shapeY;
