@@ -117,6 +117,20 @@ class Game{
         cout << " |" << endl;
     }
 
+    void moveLeft(){
+        if(!checkLeftCollide(currentShape) && !checkLeftOut(currentShape)) shapeX--;
+    }
+
+    void moveRight(){
+        if(!checkRightCollide(currentShape) && !checkRightOut(currentShape)) shapeX++;
+    }
+
+    void moveDown(){
+        if(!checkDownCollide() && shapeY+3 < height){
+            shapeY++;
+        }
+    }
+
     void produce() {
         int randomNumber = rand() % shapesVector.size();
         cubeVector vector = shapesVector[randomNumber];
