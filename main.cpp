@@ -76,6 +76,47 @@ class Game{
         produce();
     }
 
+    void display() {
+        cls();
+        cout << defaultColor << "Score: " << score << " | coordinate : { " << shapeX << "," << shapeY << "}" << endl;
+        
+        int tempMap[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                tempMap[i][j] = map[i][j];
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (currentShape.getArea(i, j) == 1) {
+                    int mapY = shapeY + i;
+                    int mapX = shapeX + j;
+                    if (mapY >= 0 && mapY < height && mapX >= 0 && mapX < width) {
+                        tempMap[mapY][mapX] = 1;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < height; i++) {
+            cout << "\e[1;33m| " << defaultColor;
+            for (int j = 0; j < width; j++) {
+                if (tempMap[i][j] == 0) {
+                    cout << " -";
+                } else if (tempMap[i][j] == 1) {
+                    cout << blockColor << "[]"<<defaultColor;
+                }
+            }
+            cout << " \e[1;33m|" << endl;
+        }
+        cout << "| ";
+        for (int k = 0; k < width; k++) {
+            cout << " -";
+        }
+        cout << " |" << endl;
+    }
+
     void produce() {
         int randomNumber = rand() % shapesVector.size();
         cubeVector vector = shapesVector[randomNumber];
