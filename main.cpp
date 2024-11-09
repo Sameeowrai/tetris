@@ -131,6 +131,19 @@ class Game{
         }
     }
 
+    void rotate(){
+        Shape temp = currentShape;
+        temp.rotate();
+        if(!checkLeftCollide(temp) && !checkRightCollide(temp)){
+            if(checkLeftOut(temp)){
+                shapeX = 0;
+            }else if(checkRightOut(temp)){
+                shapeX = width - 3;
+            }
+            currentShape.rotate();      
+        }
+    }
+
     void produce() {
         int randomNumber = rand() % shapesVector.size();
         cubeVector vector = shapesVector[randomNumber];
