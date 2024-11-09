@@ -232,11 +232,35 @@ int main(){
         {"Settings",defaultColor,2},
         {"Exit", "\e[0;31m",3}
     },0.01,10);
+    Game game;
     while(1){
         int op = menu.Get();
         switch (op)
         {
         case 0:{
+            char c;
+            unblockInput();
+            while(!game.isGameover){
+                game.display();
+                usleep(microsecond*0.25);
+                if(read(STDIN_FILENO, &c,1) > 0){
+                    if(c == 'a'){
+                        game.moveLeft();
+                    }else if(c == 'd'){
+                        game.moveRight();
+                    }else if(c == 's'){
+                        game.moveDown();
+                    }else if(c == 'r'){
+                        game.rotate();
+                    }
+                }
+                game.update();
+                tcflush(STDIN_FILENO,TCIFLUSH);
+            }
+            resetInput();
+            print("Game Over",0.25,"\e[1;31m");
+            print("Press Any Key To Continue ...", 0.05, "\e[1;33m",0);
+            getchar();
             break;
         }
 
