@@ -199,6 +199,30 @@ class Game{
         
         return false;
     }
+    void update(){
+        if(!checkDownCollide() && !checkOnGround()){
+            shapeY++;
+        }else{
+            if(shapeY == 0){
+                isGameover = true;
+                return;
+            }
+
+            for(int i=0; i < 3;i++){
+                for(int j=0; j < 3;j++){
+                    if (currentShape.getArea(i, j) == 1) {
+                        int mapY = shapeY + i;
+                        int mapX = shapeX + j;
+                        if (mapY >= 0 && mapY < height && mapX >= 0 && mapX < width) {
+                            map[mapY][mapX] = 1;
+                        }
+                    }
+                }
+            }
+            
+            produce();
+        }
+        }
 };
 
 int main(){
